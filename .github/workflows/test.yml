@@ -1,0 +1,17 @@
+name: Build LaTeX Documentation for Interations CI
+on:
+  push:
+    paths:
+    - 'documents/**/main.tex'
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v1
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@master
+        with:
+          root_file: main.tex
+          # TODO: update every iterations
+          working_directory: documents/iteration1
